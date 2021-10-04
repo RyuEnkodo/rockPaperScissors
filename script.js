@@ -1,31 +1,31 @@
 let computerPlay = function() {
     return Math.random() * 3;
     }
-let playerCount, computerCount, playerSelection, computerSelection;
+let playerCount = 0, computerCount = 0, playerSelection, computerSelection;
 
 let game = function() {
     let singleRound = function (playerSelection, computerSelection) {
         if (playerSelection == "piedra" && computerSelection < 1) {
             alert("Jugador = Piedra\nPc = Piedra\nEmpate!");
         } else if (playerSelection == "piedra" && (computerSelection >= 1 && computerSelection < 2)) {
-            computerCount++;
+            computerCount += 1;
             alert("Jugador = Piedra\nPc = Papel\nPerdiste!");
         } else if (playerSelection == "piedra" && computerSelection > 2) {
-            playerCount++;
+            playerCount += 1;
             alert("Jugador = Piedra\nPc = Tijera\nGanaste!");
         } else if (playerSelection == "papel" && (computerSelection >= 1 && computerSelection < 2) ) {
             alert("Jugador = Papel\nPc = Papel\nEmpate!");
         } else if (playerSelection == "papel" && computerSelection > 2) {
-            computerCount++;
+            computerCount += 1;
             alert("Jugador = Papel\nPc = Tijera\nPerdiste!");
         } else if (playerSelection == "papel" && computerSelection < 1) {
-            playerCount++;
+            playerCount += 1;
             alert("Jugador = Papel\nPc = Piedra\nGanaste!");
         } else if (playerSelection == "tijera" && (computerSelection >= 1 && computerSelection < 2)) {
-            playerCount++;
+            playerCount += 1;
             alert("Jugador = Tijera\nPc = Papel\nGanaste!");
         } else if (playerSelection == "tijera" && computerSelection < 1) {
-            computerCount++;
+            computerCount += 1;
             alert("Jugador = Tijera\nPc = Papel\nPerdiste!");
         } else if (playerSelection == "tijera" && computerSelection > 2) {
             alert("Jugador = Tijera\nPc = Tijera\nEmpate!");
@@ -38,16 +38,16 @@ let game = function() {
         computerSelection = computerPlay();
         singleRound(playerSelection, computerSelection);
     }
-}
-
+    
+}    
 game();
 
 if (playerCount > computerCount) {
-    alert("Ganaste!");
+    console.log(`Player wins! \nPlayer score: ${playerCount}`);
 } else if (playerCount < computerCount) {
-    alert("Perdiste!");
-} else if (playerCount == computerCount) {
-    alert("Empate!");
+    console.log(`PC Wins! \nComputer score: ${computerCount}`);
+} else {
+    console.log("Draw");
 }
 
 
